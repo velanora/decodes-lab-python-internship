@@ -26,15 +26,15 @@ def display():
        print("    *",{tasks[i]}) 
 
     # function for exiting the program
-    def exit():
-        print("\n==================  To Exit =====================\n")
-        print("Exiting......\n")
-        iterate = 'n'
+def exit():
+    print("\n==================  To Exit =====================\n")
+    print("Exiting......\n")
+    iterate = 'n'
 
-    # function for Invalid input
-    def invalid():
-        print("Invalid input!!")
-        print("Enter the correct number again!!") 
+# function for Invalid input
+def invalid():
+    print("Invalid input!!")
+    print("Enter the correct number again!!") 
 
 while iterate == 'y':
     # Menu of options
