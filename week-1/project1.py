@@ -3,12 +3,8 @@ This is an interactive command-line Python program designed to manage daily to-d
 users to personalize their list by name, append new tasks, view all current entries, and 
 exit safely through a looping menu interface.
 """
-#initalize list and loop variable
-tasks = [] #List of tasks for user
-iterate = 'y' 
-
-# Get user name
-name = str(input("Enter your name : ")) 
+tasks = [] #List of tasks for user #initalize list 
+name = str(input("Enter your name : "))  # Get user name
 print(f"\n********* Welcome to {name}'s To do list **********\n")
 
 # function to append the entered task into the list of TO DO tasks
@@ -26,17 +22,16 @@ def display():
        print("    *",{tasks[i]}) 
 
     # function for exiting the program
-def exit():
+def exit_program():
     print("\n==================  To Exit =====================\n")
     print("Exiting......\n")
-    iterate = 'n'
 
 # function for Invalid input
 def invalid():
     print("Invalid input!!")
     print("Enter the correct number again!!") 
 
-while iterate == 'y':
+while True:
     # Menu of options
     print("┌─────────────────────────────────────────┐")
     print("│         CHOOSE AN OPTION                │")
@@ -45,18 +40,21 @@ while iterate == 'y':
     print("│  [2] View all tasks                     │")
     print("│  [3] Exit program                       │")
     print("└─────────────────────────────────────────┘\n")
-    option = int(input("Enter option number : "))
+    while True:
+        try:
+            option = int(input("Enter option number : "))
+            break
+        except ValueError:
+            print("Invalid input!! please enter a number")
 
     if(option == 1):
         append_task()
     elif(option == 2):
         display()
     elif(option == 3):
-        exit()  
+        exit_program()  
+        break
     else:
         invalid()
 
     print("\n=====================================================\n")
-
-        
-    
