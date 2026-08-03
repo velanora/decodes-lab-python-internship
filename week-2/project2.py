@@ -14,7 +14,7 @@ def add_expense():
             total_expense += amount
             break
         except ValueError:
-            print("Invalid input!! please enter a number")
+            print("Invalid input!! please enter a number in amount.")
 
 def display():
     print("==================== Display =======================\n")
