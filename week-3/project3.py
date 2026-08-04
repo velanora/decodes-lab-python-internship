@@ -3,7 +3,6 @@ ENTERPRISE RANDOM PASSWORD GENERATOR
 """
 import secrets # secret password choice i.e secrets.choice()
 import string # for string manulipation i.e .join(lists)
-
 """ 
 secret.choice()
 We won't use random.choice() beacuse it relies on Mersenne Twister (deterministic random password generator)
@@ -16,7 +15,7 @@ password = None
 
 def create_account(): #1st function
     print("\n============ Create new account ==================\n")
-    global username, password
+    global username # tells interpreter : don't create a local variable
     username = str(input("Enter username : "))
     while True:
         try:
@@ -29,15 +28,27 @@ def create_account(): #1st function
             print("Enter length more than equal to 8 and less than equal to 60")    
             continue
         break
+
+    password_generator(length)
      
-def password_generator(len):
+def password_generator(lenPass):
+    global password
     sums = string.ascii_letters + string.digits + string.punctuation
-    password = "".join(secrets.choice(sums) for i in range(len) )
+    while True:
+        password = "".join(secrets.choice(sums) for i in range(lenPass) )
+        print("Password : ",password)
+        choice = input("Keep this password (y/n)").lower()
+        if(choice == 'y'):
+            break
+
+    while True:
+        confirm_password =  str(input("Confirm password : "))
+        if (password == confirm_password) :
+            print("Password Matched!! \nAccount created successfully!!")
+            break
+        else:
+            print("Doesn't matched! \nTry again!!")
     
-
-
-
-
 def display_userDetails(): # 2nd function
     print("\n=========== Account Details =====================\n")
     print("Username : ",username)
@@ -58,7 +69,7 @@ while True:
     print("│         CHOOSE AN OPTION                │")
     print("├─────────────────────────────────────────┤")
     print("│  [1] Create Account                     │")
-    print("│  [2] Display you account details        │")
+    print("│  [2] Display your account details        │")
     print("│  [3] Exit program                       │")
     print("└─────────────────────────────────────────┘\n")
     
